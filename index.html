@@ -115,7 +115,7 @@
           .class("heading")
           .parent(controlPanel);
         createDiv("Frame Rate").parent(frameRateSection);
-        frameRateSlider = createSlider(1, 100, 10).parent(frameRateSection);
+        frameRateSlider = createSlider(1, 200, 10).parent(frameRateSection);
         frameRateSlider.input(updateFrameRate);
 
         let tailSizeSection = createDiv("").parent(controlPanel);
@@ -241,7 +241,7 @@
           cell.show();
         }
 
-        if (!solving && changedCells.length > tailLength) {
+        if (changedCells.length > tailLength) {
           changedCells = changedCells.slice(-tailLength);
         }
 
@@ -312,7 +312,7 @@
         this.visited = false;
         this.solved = false;
         this.visitOrder = 0;
-        this.assignedColor = null;
+        this.assignedColor = "#ffffff";
         this.solveVisitedCount = 0;
 
         this.checkNeighbors = function () {
@@ -410,8 +410,12 @@
 
           if (!solving) {
             if (this.visited || this.solved) {
-              let idx = (changedCells.indexOf(this) || 0) + 1;
-              let visitColor = getColorFromGradient(idx, changedCells.length);
+              let idx = changedCells.indexOf(this);
+              let visitColor = this.assignedColor;
+              if (idx >= 0) {
+                visitColor = getColorFromGradient(idx + 1, changedCells.length);
+              }
+
               fill(visitColor);
               stroke(255, 255, 255, 0);
               rect(x, y, w, w);
