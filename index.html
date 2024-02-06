@@ -87,7 +87,7 @@
         closeButton,
         tailSizeSlider;
       let tailLength = 5;
-      let tailStartColorPicker, tailEndColorPicker;
+      let tailStartColorPicker, tailEndColorPicker, solveColorPicker;
 
       function setup() {
         createCanvas(windowWidth - 50, windowHeight - 25);
@@ -141,6 +141,12 @@
         let tailRow = createDiv("").class("colorOption").parent(colorsSection);
         createSpan("Tail").parent(tailRow);
         tailEndColorPicker = createColorPicker(tailEndColor).parent(tailRow);
+
+        let solveColor = color(255, 255, 255);
+        color(128, 0, 128);
+        let solveRow = createDiv("").class("colorOption").parent(colorsSection);
+        createSpan("Solving").parent(solveRow);
+        solveColorPicker = createColorPicker(solveColor).parent(solveRow);
 
         let cellSizeSection = createDiv("").parent(controlPanel);
         createDiv("Cell Size").class("heading").parent(cellSizeSection);
@@ -398,7 +404,9 @@
           } else {
             let shade = 100 + this.solveVisitedCount * 30;
             shade = min(shade, 255);
-            fill(255, 0, 0, shade);
+            let color = solveColorPicker.color();
+            color.setAlpha(shade);
+            fill(color);
           }
 
           rect(x, y, w, w);
