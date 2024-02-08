@@ -64,8 +64,9 @@
 
       .colorOption {
         display: flex;
-        justify-content: space-around;
+        justify-content: space-between;
         align-items: center;
+        width: 130px;
       }
     </style>
     <script>
@@ -137,13 +138,11 @@
           createColorPicker(tailStartColor).parent(headRow);
 
         let tailEndColor = color(255, 255, 255);
-        color(128, 0, 128);
         let tailRow = createDiv("").class("colorOption").parent(colorsSection);
         createSpan("Tail").parent(tailRow);
         tailEndColorPicker = createColorPicker(tailEndColor).parent(tailRow);
 
-        let solveColor = color(255, 255, 255);
-        color(128, 0, 128);
+        let solveColor = color(77, 238, 234);
         let solveRow = createDiv("").class("colorOption").parent(colorsSection);
         createSpan("Solving").parent(solveRow);
         solveColorPicker = createColorPicker(solveColor).parent(solveRow);
