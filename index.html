@@ -5,6 +5,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.14.2/matter.min.js"></script>
     <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+      }
+
       body {
         text-align: center;
       }
@@ -91,8 +98,8 @@
       let tailStartColorPicker, tailEndColorPicker, solveColorPicker;
 
       function setup() {
-        createCanvas(windowWidth - 50, windowHeight - 25);
-        frameRate(10);
+        frameRate(20);
+        createCanvas(windowWidth, windowHeight);
         cols = floor(width / w);
         rows = floor(height / w);
         background(255);
@@ -180,7 +187,7 @@
 
       function updateCellSize() {
         w = cellSizeSlider.value();
-        resizeCanvas(windowWidth - 25, windowHeight - 25);
+        resizeCanvas(windowWidth, windowHeight);
         cols = floor(width / w);
         rows = floor(height / w);
         initializeMaze();
@@ -276,7 +283,7 @@
       }
 
       function windowResized() {
-        resizeCanvas(windowWidth - 25, windowHeight - 25);
+        resizeCanvas(windowWidth, windowHeight);
         cols = floor(width / w);
         rows = floor(height / w);
         initializeMaze();
