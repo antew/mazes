@@ -244,6 +244,19 @@
             endCell = grid[grid.length - 1];
             for (let i = 0; i < grid.length; i++) {
               grid[i].solved = false;
+              if (i === 0) {
+                let x = grid[i].i * w;
+                let y = grid[i].j * w;
+                noStroke();
+                fill(0, 255, 0);
+                rect(x, y, w, w);
+              } else if (i === grid.length - 1) {
+                let x = grid[i].i * w;
+                let y = grid[i].j * w;
+                noStroke();
+                fill(255, 0, 0); // Red for goal
+                rect(x, y, w, w);
+              }
             }
             startCell.solve();
           }
