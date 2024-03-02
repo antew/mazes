@@ -474,13 +474,6 @@
         return lerpColor(endColor, startColor, amt);
       }
 
-      let baseColors = ["#264653", "#2A9D8F", "#E9C46A", "#F4A261", "#E76F51"];
-      function getColor(order) {
-        let colorIndex = floor(map(order, 0, visitCount, 0, baseColors.length));
-        colorIndex = constrain(colorIndex, 0, baseColors.length - 1);
-        return color(baseColors[colorIndex]);
-      }
-
       function removeWalls(a, b) {
         let x = a.i - b.i;
         if (x === 1) {
