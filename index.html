@@ -105,7 +105,9 @@
         background(255);
         initializeMaze();
 
-        controlPanel = createDiv("").id("controlPanel");
+        controlPanel = createDiv("")
+          .id("controlPanel")
+          .style("display", "none");
         createElement("h3", "Controls").parent(controlPanel);
 
         closeButton = createButton("x")
@@ -159,8 +161,8 @@
         cellSizeSlider = createSlider(1, 100, w).parent(cellSizeSection);
         cellSizeSlider.input(updateCellSize);
 
-        togglePanelButton = createButton("Toggle Panel").id("togglePanel");
-        togglePanelButton.mousePressed(togglePanel).style("display", "none");
+        togglePanelButton = createButton("Controls").id("togglePanel");
+        togglePanelButton.mousePressed(togglePanel);
       }
 
       function togglePanel() {
