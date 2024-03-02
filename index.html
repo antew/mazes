@@ -242,21 +242,10 @@
             solving = true;
             startCell = grid[0];
             endCell = grid[grid.length - 1];
+            startCell.highlightWith(0, 255, 0, 100);
+            endCell.highlightWith(0, 0, 255, 100);
             for (let i = 0; i < grid.length; i++) {
               grid[i].solved = false;
-              if (i === 0) {
-                let x = grid[i].i * w;
-                let y = grid[i].j * w;
-                noStroke();
-                fill(0, 255, 0);
-                rect(x, y, w, w);
-              } else if (i === grid.length - 1) {
-                let x = grid[i].i * w;
-                let y = grid[i].j * w;
-                noStroke();
-                fill(255, 0, 0); // Red for goal
-                rect(x, y, w, w);
-              }
             }
             startCell.solve();
           }
@@ -401,6 +390,14 @@
           let y = this.j * w;
           noStroke();
           fill(0, 0, 255, 100);
+          rect(x, y, w, w);
+        };
+
+        this.highlightWith = function (r, b, g, a) {
+          let x = this.i * w;
+          let y = this.j * w;
+          noStroke();
+          fill(r, b, g, a);
           rect(x, y, w, w);
         };
 
